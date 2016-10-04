@@ -1,11 +1,5 @@
-# App Engine Standard Flask Hello World
+# Date a Project
 
-This sample shows how to use [Flask](http://flask.pocoo.org/) with Google App
-Engine Standard.
+Date a project is a matchmaking site for developers wanting to abandon a project and developers wanting to contribute to an open source project.
 
-Before running or deploying this application, install the dependencies using
-[pip](http://pip.readthedocs.io/en/stable/):
-
-    pip install -t lib -r requirements.txt
-
-For more information, see the [App Engine Standard README](../../README.md)
+Template from  [Start Bootstrap](http://startbootstrap.com/) - [Stylish Portfolio](http://startbootstrap.com/template-overviews/stylish-portfolio/) Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-stylish-portfolio/blob/gh-pages/LICENSE) license.
