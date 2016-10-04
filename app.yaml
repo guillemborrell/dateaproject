@@ -3,5 +3,26 @@ api_version: 1
 threadsafe: true
 
 handlers:
+- url: /css/(.+)
+  static_files: css/\1
+  upload: css/(.*)
+
+- url: /js/(.+)
+  static_files: js/\1
+  upload: js/(.*)
+
+- url: /img/(.+)
+  static_files: img/\1
+  upload: img/(.*)
+
+- url: /fonts/(.+)
+  static_files: fonts/\1
+  upload: fonts/(.+)
+
+- url: /font-awesome
+  static_dir: font-awesome
+
 - url: /.*
   script: main.app
+
+ 
