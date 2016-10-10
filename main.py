@@ -30,7 +30,7 @@ def dashboard():
 @app.route('/css/<name>')
 def serve_css(name):
     try:
-        with open(os.path.join(os.path.dirname(__file__), 'css', name)) as f:
+        with open(os.path.join(os.path.dirname(__file__), 'css', name),'rb') as f:
             response = make_response(f.read())
             response.headers['Content-Type']= 'text/css'
 
@@ -42,7 +42,7 @@ def serve_css(name):
 
 @app.route('/js/<name>')
 def serve_js(name):
-    with open(os.path.join(os.path.dirname(__file__), 'js', name)) as f:
+    with open(os.path.join(os.path.dirname(__file__), 'js', name),'rb') as f:
         response = make_response(f.read())
     
     response.headers['Content-Type'] = 'text/js'
@@ -51,7 +51,7 @@ def serve_js(name):
 
 @app.route('/img/<name>')
 def serve_img(name):
-    with open(os.path.join(os.path.dirname(__file__), 'img', name)) as f:
+    with open(os.path.join(os.path.dirname(__file__), 'img', name), 'rb') as f:
         response = make_response(f.read())
     
     response.headers['Content-Type'] = 'image/jpg'
@@ -61,7 +61,7 @@ def serve_img(name):
 
 @app.route('/font-awesome/<sub>/<name>')
 def serve_fontawesome(sub, name):
-    with open(os.path.join(os.path.dirname(__file__), 'font-awesome', sub,  name)) as f:
+    with open(os.path.join(os.path.dirname(__file__), 'font-awesome', sub,  name),'rb') as f:
         response = make_response(f.read())
     
     response.headers['Content-Type'] = 'text/css'
