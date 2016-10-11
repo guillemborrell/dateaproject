@@ -1,3 +1,4 @@
+from uuid import uuid4
 import logging
 import jinja2
 import os
@@ -9,20 +10,28 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True)
 
 from flask import Flask, make_response
+from flask_github import GitHub
 
 
 app = Flask(__name__)
+app.config['GITHUB_CLIENT_ID'] = '80cfec1f418d434c1d71'
+app.config['GITHUB_CLIENT_SECRET'] = '71b3b3a810a6ba696f6b2bdedacee67aa4971676'
+app.config['GITHUB_BASE_URL'] = 'https://api.github.com/'
+app.config['GITHUB_AUTH_URL'] = 'https://github.com/login/oauth/'
 
+github = GitHub(app)
 
 @app.route('/')
 def main():
     template = JINJA_ENVIRONMENT.get_template('index.html')
-    return template.render()
+    secret = str(uuid4())
+    return template.render(secret=secret)
 
 @app.route('/dashboard')
 def dashboard():
-    template = JINJA_ENVIRONMENT.get_template('dashboard.html')
-    return template.render()
+    return github.authorize()
+    #template = JINJA_ENVIRONMENT.get_template('dashboard.html')
+    #return template.render()
 
 
 #### Handlers for running locally with static files.
