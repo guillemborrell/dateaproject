@@ -39,10 +39,10 @@ def is_abandoned(username, repo):
             print('Rate limit exceeded')
         raise ValueError
 
-def get_abandoned_info(abandoned_file):
+def get_abandoned_info(username, repo):
     """
     """
-    r = requests.get('https://api.github.com/repos/' + username + repo +'/contents/.abandoned')
+    r = requests.get('https://api.github.com/repos/' + username + '/' + repo +'/contents/.abandoned')
     if(r.ok):
         repoItem = json.loads(r.text or r.content, parse_float=True)
         f = base64ToString(repoItem['content'])
@@ -51,7 +51,7 @@ def get_abandoned_info(abandoned_file):
         #print(g)
 
 if __name__ == '__main__':
-    username = 'guillemborrell'
+    username = 'cperales'
     repositories = repos_from_user(username)
 
     for repo in repositories:
