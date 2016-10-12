@@ -18,3 +18,8 @@ python main.py
 ~~~~
 
 Template from  [Start Bootstrap](http://startbootstrap.com/) - [Stylish Portfolio](http://startbootstrap.com/template-overviews/stylish-portfolio/) Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-stylish-portfolio/blob/gh-pages/LICENSE) license.
+
+
+# Fork by [cperales](https://github.com/cperales)
+
+The idea of this fork is to develop a functional app. We are working on it ;)
