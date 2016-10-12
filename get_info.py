@@ -1,12 +1,9 @@
 import requests
 import json
 from pprint import pprint
-import io
 import base64
+import codecs
 
-
-def stringToBase64(s):
-    return base64.b64encode(s.encode('utf-8'))
 
 def base64ToString(b):
     return base64.b64decode(b)
@@ -19,18 +16,13 @@ if __name__ == '__main__':
         for file_or_folder in repoItem:
             if file_or_folder.get('name') == '.abandoned' :
                 abandoned_file = file_or_folder
-            elif file_or_folder.get('name') == 'readme.md':
-                # pprint(file_or_folder)
-                pass
+                break
 
-    r = requests.get('https://api.github.com/repos/guillemborrell/thermopy/contents/readme.md')
+    r = requests.get('https://api.github.com/repos/cperales/Riesgo-Reputacional-PyConES2016/contents/README.md')
+    #r = requests.get('https://api.github.com/repos/guillemborrell/thermopy/contents/.abandoned')
     if(r.ok):
         repoItem = json.loads(r.text or r.content, parse_float=True)
-        for field in repoItem.keys():
-            if field == 'content':
-                print(type(repoItem[field]))
-                f = base64ToString(repoItem[field])
-                g = io.BytesIO(f)
-                print(g)
-
-    # pprint(abandoned_file)
+        f = base64ToString(repoItem['content'])
+        g = f.decode("utf8")
+        print(f)
+        print(g)
