@@ -1,7 +1,16 @@
+from flask import Flask, make_response, flash, redirect, request
 from uuid import uuid4
+import urllib
+import urllib2
+from urlparse import urlparse
 import logging
 import jinja2
 import os
+
+try:
+    from models import User
+except ImportError as e:
+    print("GAE Environment not detected")
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -9,17 +18,14 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-from flask import Flask, make_response
-from flask_github import GitHub
-
-
 app = Flask(__name__)
+app.secret_key = 'SECRET_DUMMY'
+app.debug = True
 app.config['GITHUB_CLIENT_ID'] = '80cfec1f418d434c1d71'
 app.config['GITHUB_CLIENT_SECRET'] = '71b3b3a810a6ba696f6b2bdedacee67aa4971676'
 app.config['GITHUB_BASE_URL'] = 'https://api.github.com/'
 app.config['GITHUB_AUTH_URL'] = 'https://github.com/login/oauth/'
 
-github = GitHub(app)
 
 @app.route('/')
 def main():
@@ -27,11 +33,70 @@ def main():
     secret = str(uuid4())
     return template.render(secret=secret)
 
+@app.route('/login')
+def login():
+    url = 'https://github.com/login/oauth/authorize'
+    values = {'client_id': app.config['GITHUB_CLIENT_ID'],
+              'redirect_uri': 'http://dateaproject.appspot.com/github-callback',
+              'state': str(uuid4())}
+    try:
+        data = urllib.urlencode(values)
+    except:
+        data = urllib.parse.urlencode(values)
+        
+    return redirect('?'.join([url, data]))
+    
+@app.route('/github-callback')
+def authorized():
+    url = 'https://github.com/login/oauth/access_token'
+    next_url = '/dashboard'
+
+    oauth_token = request.args.get('code')
+    
+    if not oauth_token:
+        access_token = requests.args.get('access_token')
+        if access_token:
+            return redirect('/dashboard')
+        else:
+            flash("Authorization failed")
+            return redirect('/')
+
+    user = User.query_access(oauth_token)
+    if not user:
+        user = User(access_token=oauth_token)
+        user.put()
+
+    values = {'client_id': app.config['GITHUB_CLIENT_ID'],
+              'client_secret': app.config['GITHUB_CLIENT_SECRET'],
+              'code': oauth_token,
+              'redirect_uri': 'http://dateaproject.appspot.com/github-callback',
+              'state': str(uuid4())}
+
+    try:
+        data = urllib.urlencode(values)
+    except:
+        data = urllib.parse.urlencode(values)
+        
+    req = urllib2.Request(url, data)
+    response = urllib2.urlopen(req)
+    rep_data = response.read()
+
+    parsed_response = {}
+    for part in rep_data.split('&'):
+        key, value = part.split('=')
+        parsed_response[key] = value
+ 
+    if 'access_token' in parsed_response:
+        return redirect('/dashboard')
+    else:
+        flash("Authorization failed")
+        return rep_data
+        
+
 @app.route('/dashboard')
 def dashboard():
-    return github.authorize()
-    #template = JINJA_ENVIRONMENT.get_template('dashboard.html')
-    #return template.render()
+    template = JINJA_ENVIRONMENT.get_template('dashboard.html')
+    return template.render()
 
 
 #### Handlers for running locally with static files.
