@@ -1,8 +1,7 @@
 import requests
 import json
-from pprint import pprint
+import io
 import base64
-import codecs
 
 
 def base64ToString(b):
@@ -46,9 +45,18 @@ def get_abandoned_info(username, repo):
     if(r.ok):
         repoItem = json.loads(r.text or r.content, parse_float=True)
         f = base64ToString(repoItem['content'])
-        return f
-        #g = f.decode("utf8")
-        #print(g)
+        text = f.split('\n')
+        final_text = ''
+        for line in text:
+            final_text += line
+            final_text += """
+"""
+        return final_text
+
+        # # Another way, more obscure
+        # g = io.StringIO(f.decode('utf-8'))
+        # for b in g.readlines():
+        #     print(b)
 
 if __name__ == '__main__':
     username = 'cperales'
@@ -56,6 +64,6 @@ if __name__ == '__main__':
 
     for repo in repositories:
         if is_abandoned(username, repo):
-            print(repo + ' is abandoned')
+            print(repo + ' is abandoned:')
             info = get_abandoned_info(username, repo)
             print(info)
