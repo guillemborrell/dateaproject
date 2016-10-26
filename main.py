@@ -6,6 +6,7 @@ from urlparse import urlparse
 import logging
 import jinja2
 import os
+import config
 
 try:
     from models import User
@@ -19,12 +20,11 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True)
 
 app = Flask(__name__)
-app.secret_key = 'SECRET_DUMMY'
-app.debug = True
-app.config['GITHUB_CLIENT_ID'] = '80cfec1f418d434c1d71'
-app.config['GITHUB_CLIENT_SECRET'] = '71b3b3a810a6ba696f6b2bdedacee67aa4971676'
-app.config['GITHUB_BASE_URL'] = 'https://api.github.com/'
-app.config['GITHUB_AUTH_URL'] = 'https://github.com/login/oauth/'
+app.secret_key = config.FLASK_SECRET
+app.config['GITHUB_CLIENT_ID'] = config.GITHUB_CLIENT_ID
+app.config['GITHUB_CLIENT_SECRET'] = config.GITHUB_CLIENT_SECRET
+app.config['GITHUB_BASE_URL'] = config.GITHUB_BASE_URL
+app.config['GITHUB_AUTH_URL'] = config.GITHUB_AUTH_URL
 
 
 @app.route('/')
