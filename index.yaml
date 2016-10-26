@@ -1,0 +1,8 @@
+indexes:
+
+- kind: User
+  properties:
+  - name: uid
+  - name: date
+    direction: desc
+ 

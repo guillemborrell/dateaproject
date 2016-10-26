@@ -57,10 +57,13 @@
 
     <!-- Header -->
     <header id="top" class="header">
-        <div class="text-vertical-center">
-            <h1>Stay tuned!</h1>
-            <h3>Date a Project is in development</h3>
-        </div>
+      <div class="text-vertical-center">
+	{% if user %}
+	<h1>Hi {{ user.name }}! </h1>
+	{% endif %}
+        <h1>Stay tuned!</h1>
+        <h3>Date a Project is in development</h3>
+      </div>
     </header>
 
     <!-- <\!-- About -\-> -->

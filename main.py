@@ -7,6 +7,7 @@ import logging
 import jinja2
 import os
 import config
+import json
 
 try:
     from models import User
@@ -52,6 +53,7 @@ def authorized():
     next_url = '/dashboard'
 
     oauth_token = request.args.get('code')
+    state = request.args.get('state')
     
     if not oauth_token:
         access_token = requests.args.get('access_token')
@@ -61,16 +63,16 @@ def authorized():
             flash("Authorization failed")
             return redirect('/')
 
-    user = User.query_access(oauth_token)
+    user = User.query_oauth(oauth_token)
     if not user:
-        user = User(access_token=oauth_token)
+        user = User(oauth_token=oauth_token)
         user.put()
 
     values = {'client_id': app.config['GITHUB_CLIENT_ID'],
               'client_secret': app.config['GITHUB_CLIENT_SECRET'],
               'code': oauth_token,
               'redirect_uri': 'http://dateaproject.appspot.com/github-callback',
-              'state': str(uuid4())}
+              'state': state}
 
     try:
         data = urllib.urlencode(values)
@@ -87,16 +89,49 @@ def authorized():
         parsed_response[key] = value
  
     if 'access_token' in parsed_response:
-        return redirect('/dashboard')
+        try:
+            response = urllib2.urlopen(
+                'https://api.github.com/user?access_token={}'.format(
+                    parsed_response['access_token'])
+                )
+            rep_data = response.read()
+            user_data = json.loads(rep_data)
+
+            user = User.query_oauth(oauth_token)[0]
+            user.oauth_token=user.oauth_token
+            user.access_token=parsed_response['access_token']
+            user.uid=user_data['id']
+            user.login=user_data['login']
+            user.avatar=user_data['avatar_url']
+            user.company=user_data['company']
+            user.blog=user_data['blog']
+            user.bio=user_data['bio']
+            user.email=user_data['email']
+            user.location=user_data['location']
+            user.name=user_data['name']
+            user.put()
+            
+            return redirect('/dashboard?id={}'.format(user_data['id']))
+        except urllib2.HTTPError as e:
+            logging.critical(parsed_response)
+            return 'Internal server error. We are working on authentication now'
+        
     else:
         flash("Authorization failed")
-        return rep_data
+        return redirect('/')
         
 
 @app.route('/dashboard')
 def dashboard():
+    uid = request.args.get('id')
+    if uid:
+        user = User.query_uid(int(uid))
+        if user:
+            user = user[0]
+        else:
+            user = None
     template = JINJA_ENVIRONMENT.get_template('dashboard.html')
-    return template.render()
+    return template.render({'user': user})
 
 
 #### Handlers for running locally with static files.
