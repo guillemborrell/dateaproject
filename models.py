@@ -26,3 +26,9 @@ class User(ndb.Model):
     @classmethod
     def query_uid(cls, uid):
         return cls.query(cls.uid==uid).order(-cls.date).fetch(1)
+
+
+class Session(ndb.Model):
+    user = ndb.KeyProperty(required=True, kind=User)
+    when = ndb.DateTimeProperty(auto_now_add=True)
+    

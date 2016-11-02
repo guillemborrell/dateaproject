@@ -1,5 +1,6 @@
 from flask import Flask, make_response, flash, redirect, request
 from uuid import uuid4
+from collections import namedtuple
 import urllib
 import urllib2
 from urlparse import urlparse
@@ -11,8 +12,10 @@ import json
 
 try:
     from models import User
+    NOGAE = False
 except ImportError as e:
     print("GAE Environment not detected")
+    NOGAE = True
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -36,16 +39,19 @@ def main():
 
 @app.route('/login')
 def login():
-    url = 'https://github.com/login/oauth/authorize'
-    values = {'client_id': app.config['GITHUB_CLIENT_ID'],
-              'redirect_uri': 'http://dateaproject.appspot.com/github-callback',
-              'state': str(uuid4())}
-    try:
-        data = urllib.urlencode(values)
-    except:
-        data = urllib.parse.urlencode(values)
+    if NOGAE:
+        return redirect('/test-dashboard')
+    else:
+        url = 'https://github.com/login/oauth/authorize'
+        values = {'client_id': app.config['GITHUB_CLIENT_ID'],
+                  'redirect_uri': 'http://dateaproject.appspot.com/github-callback',
+                  'state': str(uuid4())}
+        try:
+            data = urllib.urlencode(values)
+        except:
+            data = urllib.parse.urlencode(values)
         
-    return redirect('?'.join([url, data]))
+        return redirect('?'.join([url, data]))
     
 @app.route('/github-callback')
 def authorized():
@@ -130,6 +136,23 @@ def dashboard():
             user = user[0]
         else:
             user = None
+    template = JINJA_ENVIRONMENT.get_template('dashboard.html')
+    return template.render({'user': user})
+
+
+@app.route('/test-dashboard')
+def test_dashboard():
+    User = namedtuple('User', 'uid login avatar company blog bio email location name')
+    user = User(uid = 1111,
+                login = 'itsme',
+                avatar = '/img/user.png',
+                company = 'Dateaproject Inc.',
+                blog= 'http://dateaproject.appspot.com',
+                bio = 'Sharing love all around',
+                email = 'dateaproject@appspot.com',
+                location = 'Planet Earth',
+                name = 'Date a poject')
+
     template = JINJA_ENVIRONMENT.get_template('dashboard.html')
     return template.render({'user': user})
 
