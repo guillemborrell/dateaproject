@@ -1,164 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Bootstrap 3 Control Panel</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/stylish-portfolio.css" rel="stylesheet">
+		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+<!-- Header -->
+<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-toggle"></span>
+      </button>
+      <a class="navbar-brand" href="#">Control Panel</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+            <i class="fa fa-user"></i> Admin <span class="caret"></span></a>
+          <ul id="g-account-menu" class="dropdown-menu" role="menu">
+            <li><a href="#">My Profile</a></li>
+            <li><a href="#"><i class="fa fa-user"></i> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div><!-- /container -->
+</div>
+<!-- /Header -->
 
-<head>
+<!-- Main -->
+<div class="container">
+  
+  <!-- upper section -->
+  <div class="row">
+	<div class="col-sm-3">
+      <!-- left -->
+      <h3><i class="fa fa-briefcase"></i> Toolbox</h3>
+      <hr>
+      
+      <ul class="nav nav-stacked">
+        <li><a href="http://www.bootply.com/85861" target="ext"><i class="fa fa-flash"></i> Alerts</a></li>
+        <li><a href="http://www.bootply.com/85861" target="ext"><i class="fa fa-link"></i> Links</a></li>
+        <li><a href="http://www.bootply.com/85861" target="ext"><i class="fa fa-list-alt"></i> Reports</a></li>
+        <li><a href="http://www.bootply.com/85861" target="ext"><i class="fa fa-book"></i> Books</a></li>
+        <li><a href="http://www.bootply.com/85861" target="ext"><i class="fa fa-briefcase"></i> Tools</a></li>
+        <li><a href="http://www.bootply.com/85861" target="ext"><i class="fa fa-plus"></i> Real-time</a></li>
+        <li><a href="http://www.bootply.com/85861" target="ext"><i class="fa fa-plus"></i> Advanced..</a></li>
+      </ul>
+      
+      <hr>
+      
+  	</div><!-- /span-3 -->
+    <div class="col-sm-9">
+      	
+      <!-- column 2 -->	
+       <h3><i class="fa fa-dashboard"></i> Bootply Dashboard</h3>  
+            
+       <hr>
+      
+	   <div class="row">
+            <!-- center left-->	
+         	<div class="col-md-7">
+			  <div class="well">Inbox Messages <span class="badge pull-right">3</span></div>
+              
+              <hr>
+              
+              <div class="panel panel-default">
+                  <div class="panel-heading"><h4>Processing Status</h4></div>
+                  <div class="panel-body">
+                    
+                    <small>Complete</small>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%">
+                        <span class="sr-only">72% Complete</span>
+                      </div>
+                    </div>
+                    <small>In Progress</small>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                        <span class="sr-only">20% Complete</span>
+                      </div>
+                    </div>
+                    <small>At Risk</small>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                        <span class="sr-only">80% Complete</span>
+                      </div>
+                    </div>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Date a Project - Dashboarfd.</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/stylish-portfolio.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-
-    <!-- <\!-- Navigation -\-> -->
-    <!-- <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a> -->
-    <!-- <nav id="sidebar-wrapper"> -->
-    <!--     <ul class="sidebar-nav"> -->
-    <!--         <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a> -->
-    <!--         <li class="sidebar-brand"> -->
-    <!--             <a href="#top" onclick=$("#menu-close").click();>Start Bootstrap</a> -->
-    <!--         </li> -->
-    <!--         <li> -->
-    <!--             <a href="#top" onclick=$("#menu-close").click();>Home</a> -->
-    <!--         </li> -->
-    <!--         <li> -->
-    <!--             <a href="#about" onclick=$("#menu-close").click();>About</a> -->
-    <!--         </li> -->
-    <!--         <li> -->
-    <!--             <a href="#features" onclick=$("#menu-close").click();>Features</a> -->
-    <!--         </li> -->
-    <!--         <li> -->
-    <!--             <a href="#contact" onclick=$("#menu-close").click();>Contact</a> -->
-    <!--         </li> -->
-    <!--     </ul> -->
-    <!-- </nav> -->
-
-    <!-- Header -->
-    <header id="top" class="header">
-      <div class="text-vertical-center">
-	{% if user %}
-	<h1>Hi {{ user.name }}! </h1>
-	{% endif %}
-        <h1>Stay tuned!</h1>
-        <h3>Date a Project is in development</h3>
+                  </div><!--/panel-body-->
+              </div><!--/panel-->                     
+              
+          	</div><!--/col-->
+         
+            <!--center-right-->
+        	<div class="col-md-5">
+              
+                <ul class="nav nav-justified">
+         			<li><a href="#"><i class="fa fa-cog"></i></a></li>
+                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+         			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-comment"></i><span class="count">3</span></a><ul class="dropdown-menu" role="menu"><li><a href="#">1. Is there a way..</a></li><li><a href="#">2. Hello, admin. I would..</a></li><li><a href="#"><strong>All messages</strong></a></li></ul></li>
+         			<li><a href="#"><i class="fa fa-user"></i></a></li>
+         			<li><a title="Add Widget" data-toggle="modal" href="#addWidgetModal"><span class="fa fa-plus-sign"></span></a></li>
+       			</ul>  
+              
+                <hr>
+              
+				<p>
+                  This is a responsive dashboard-style layout that uses <a href="http://www.getbootstrap.com">Bootstrap 3</a>. You can use this template as a starting point to create something more unique.
+                </p>
+                <p>
+                  Visit the Bootstrap Playground at <a href="http://www.bootply.com">Bootply</a> to tweak this layout, or discover 1000's of Bootstrap code examples and snippets.
+                </p>
+              
+                <hr>
+              
+                <div class="btn-group btn-group-justified">
+                  <a href="#" class="btn btn-info col-sm-3">
+                    <i class="fa fa-plus"></i><br>
+                    Service
+                  </a>
+                  <a href="#" class="btn btn-info col-sm-3">
+                    <i class="fa fa-cloud"></i><br>
+                    Cloud
+                  </a>
+                  <a href="#" class="btn btn-info col-sm-3">
+                    <i class="fa fa-cog"></i><br>
+                    Tools
+                  </a>
+                  <a href="#" class="btn btn-info col-sm-3">
+                    <i class="fa fa-question-sign"></i><br>
+                    Help
+                  </a>
+                </div>
+              
+			</div><!--/col-span-6-->
+     
+       </div><!--/row-->
+  	</div><!--/col-span-9-->
+    
+  </div><!--/row-->
+  <!-- /upper section -->
+  
+  <!-- lower section -->
+  <div class="row">
+    
+    <div class="col-md-12">
+      <hr>
+      <a href="#"><strong><i class="fa fa-list-alt"></i> Reports</strong></a>  
+      <hr>    
+    </div>
+    <div class="col-md-8">
+      
+      <table class="table table-striped">
+        <thead>
+          <tr><th>Visits</th><th>ROI</th><th>Source</th><th>Description and Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>45</td><td>2.45%</td><td>Direct</td><td>Sam sapien massa, aliquam in cursus ut, ullamcorper in tortor. 
+          Aliquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.</td></tr>
+          <tr><td>289</td><td>56.2%</td><td>Referral</td><td>After RWD massa, aliquam in cursus ut, ullamcorper in tortor. 
+          Aliquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.</td></tr>
+          <tr><td>98</td><td>25%</td><td>Type</td><td>Wil sapien massa, aliquam in cursus ut, ullamcorper in tortor. 
+          Liquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.</td></tr>
+          <tr><td>109</td><td>8%</td><td>..</td><td>Forfoot aliquam in cursus ut, ullamcorper in tortor. 
+          Okma mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.</td></tr>
+          <tr><td>34</td><td>14%</td><td>..</td><td>Mikel sapien massa, aliquam in cursus ut, ullamcorper in tortor. 
+          Maliquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.</td></tr>
+        </tbody>
+      </table>
+      
+      <hr>              
+      
+      <!--tabs-->
+      <div class="container">
+        <ul class="nav nav-tabs" id="myTab">
+          <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+          <li><a href="#messages" data-toggle="tab">Messages</a></li>
+          <li><a href="#settings" data-toggle="tab">Settings</a></li>
+        </ul>
+        
+        <div class="tab-content">
+          <div class="tab-pane active" id="profile">
+            <h4><i class="fa fa-user"></i></h4>
+            Lorem profile dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+            <p>Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+              dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+              Aliquam in felis sit amet augue.</p>
+          </div>
+          <div class="tab-pane" id="messages">
+            <h4><i class="fa fa-comment"></i></h4>
+            Message ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+            <p>Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+              dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+              Aliquam in felis sit amet augue.</p>
+          </div>
+          <div class="tab-pane" id="settings">
+            <h4><i class="fa fa-cog"></i></h4>
+            Lorem settings dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+            <p>Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+              dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+              Aliquam in felis sit amet augue.</p>
+          </div>
+        </div>
       </div>
-    </header>
+      <!--/tabs-->
+      
+      <hr>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4>New Requests</h4></div>
+        <div class="panel-body">
+          <div class="list-group">
+            <a href="#" class="list-group-item active">Hosting virtual mailbox serv..</a>
+            <a href="#" class="list-group-item">Dedicated server doesn't..</a>
+            <a href="#" class="list-group-item">RHEL 6 install on new..</a>
+          </div>
+        </div>
+      </div>
+      
+      <hr>
+      
+      <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        Please remember to <a href="#">Logout</a> for classified security.
+      </div>
 
-    <!-- <\!-- About -\-> -->
-    <!-- <section id="about" class="about"> -->
-    <!--     <div class="container"> -->
-    <!--         <div class="row"> -->
-    <!--             <div class="col-lg-12 text-center"> -->
-    <!--               <h2>A matchmaking site for abandoned open source projects!</h2> -->
-    <!-- 		  <p class="lead">...</p> -->
-    <!--               <p class="lead">Do you want to find a new home for your project?</p> -->
-    <!-- 		  <p>Upload the information about the projects you no longer want to maintain to our database, maybe there's a developer that makes a perfect match for one of them.</p> -->
-    <!-- 		  <p class="lead">...</p> -->
-    <!-- 		  <p class="lead">Are you looking for interesting ideas?</p> -->
-    <!-- 		  <p>Log in with your github account, create a profile and let <i>Date a project</i> make some suggestions.</p> -->
-    <!--             </div> -->
-    <!--         </div> -->
-    <!--         <\!-- /.row -\-> -->
-    <!--     </div> -->
-    <!--     <\!-- /.container -\-> -->
-    <!-- </section> -->
+    
+    </div>
+    <div class="col-md-4">
+      
+      <ul class="nav nav-pills nav-stacked">
+        <li class="nav-header"></li>
+        <li><a href="#"><i class="fa fa-list"></i> Layouts &amp; Templates</a></li>
+        <li class="divider"></li>
+        <li><a href="#"><i class="fa fa-briefcase"></i> Toolbox</a></li>
+        <li><a href="#"><i class="fa fa-link"></i> Widgets</a></li>
+        <li><a href="#"><i class="fa fa-list-alt"></i> Reports</a></li>
+        <li><a href="#"><i class="fa fa-book"></i> Pages</a></li>
+        <li class="divider"></li>
+        <li><a href="#"><i class="fa fa-star"></i> Social Media</a></li>
+      </ul>
+      
+      <hr>
+              
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <i class="fa fa-wrench pull-right"></i>
+            <h4>Submit Request</h4>
+          </div>
+        </div>
+        <div class="panel-body">
+          
+          <form class="form form-vertical">
+            <div class="control-group">
+              <label>Name</label>
+              <div class="controls">
+                <input type="text" class="form-control" placeholder="Enter Name">
+              </div>
+            </div>      
+            <div class="control-group">
+              <label>Title</label>
+              <div class="controls">
+                <input type="password" class="form-control" placeholder="Password">
+                
+              </div>
+            </div>   
+            <div class="control-group">
+              <label>Details</label>
+              <div class="controls">
+                <textarea class="form-control"></textarea>
+              </div>
+            </div> 
+            <div class="control-group">
+              <label>Select</label>
+              <div class="controls">
+                <select class="form-control"><option>General Question</option><option>Server Issues</option><option>Billing Question</option></select>
+              </div>
+            </div>    
+            <div class="control-group">
+              <label></label>
+              <div class="controls">
+                <button type="submit" class="btn btn-primary">
+                  Post
+                </button>
+              </div>
+            </div>   
+            
+          </form>
+          
+          
+        </div><!--/panel content-->
+      </div><!--/panel-->
+      
+      <div class="panel panel-default">
+        <div class="panel-heading"><div class="panel-title"><h4>Engagement</h4></div></div>
+        <div class="panel-body">	
+          <div class="col-xs-4 text-center"><img src="http://placehold.it/80/BBBBBB/FFF" class="img-circle img-responsive"></div>
+          <div class="col-xs-4 text-center"><img src="http://placehold.it/80/EFEFEF/555" class="img-circle img-responsive"></div>
+          <div class="col-xs-4 text-center"><img src="http://placehold.it/80/EEEEEE/222" class="img-circle img-responsive"></div>
+        </div>
+      </div><!--/panel-->
+    
+    </div><!--/col-->
+    
+  </div><!--/row-->
+  
+</div><!--/container-->
+<!-- /Main -->
 
-    <!-- <\!-- Services -\-> -->
-    <!-- <\!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -\-> -->
-    <!-- <section id="features" class="services bg-primary"> -->
-    <!--     <div class="container"> -->
-    <!--         <div class="row text-center"> -->
-    <!--             <div class="col-lg-10 col-lg-offset-1"> -->
-    <!--                 <h2>Take a chance!</h2> -->
-    <!--                 <hr class="small"> -->
-    <!--                 <div class="row"> -->
-    <!--                     <div class="col-md-3 col-sm-6"> -->
-    <!--                         <div class="service-item"> -->
-    <!--                             <span class="fa-stack fa-4x"> -->
-    <!--                             <i class="fa fa-circle fa-stack-2x"></i> -->
-    <!--                             <i class="fa fa-database fa-stack-1x text-primary"></i> -->
-    <!--                         </span> -->
-    <!--                             <h4> -->
-    <!--                                 <strong>Register a project</strong> -->
-    <!--                             </h4> -->
-    <!--                             <p>Fill out a small form to let the others know about your project</p> -->
-    <!--                         </div> -->
-    <!--                     </div> -->
-    <!--                     <div class="col-md-3 col-sm-6"> -->
-    <!--                         <div class="service-item"> -->
-    <!--                             <span class="fa-stack fa-4x"> -->
-    <!--                             <i class="fa fa-circle fa-stack-2x"></i> -->
-    <!--                             <i class="fa fa-compass fa-stack-1x text-primary"></i> -->
-    <!--                         </span> -->
-    <!--                             <h4> -->
-    <!--                                 <strong>Find a project</strong> -->
-    <!--                             </h4> -->
-    <!--                             <p>Trust us, we can find a perfect match that suits your profile.</p> -->
-    <!--                         </div> -->
-    <!--                     </div> -->
-    <!--                     <div class="col-md-3 col-sm-6"> -->
-    <!--                         <div class="service-item"> -->
-    <!--                             <span class="fa-stack fa-4x"> -->
-    <!--                             <i class="fa fa-circle fa-stack-2x"></i> -->
-    <!--                             <i class="fa fa-search fa-stack-1x text-primary"></i> -->
-    <!--                         </span> -->
-    <!--                             <h4> -->
-    <!--                                 <strong>Browse our database</strong> -->
-    <!--                             </h4> -->
-    <!--                             <p>You can browse all our projects if you are just curious.</p> -->
-    <!--                         </div> -->
-    <!--                     </div> -->
-    <!--                     <div class="col-md-3 col-sm-6"> -->
-    <!--                         <div class="service-item"> -->
-    <!--                             <span class="fa-stack fa-4x"> -->
-    <!--                             <i class="fa fa-circle fa-stack-2x"></i> -->
-    <!--                             <i class="fa fa-comments-o fa-stack-1x text-primary"></i> -->
-    <!--                         </span> -->
-    <!--                             <h4> -->
-    <!--                                 <strong>Get some feedback</strong> -->
-    <!--                             </h4> -->
-    <!--                             <p>You can also share ideas, if you don't have a project yet.</p> -->
-    <!--                         </div> -->
-    <!--                     </div> -->
-    <!--                 </div> -->
-    <!--                 <\!-- /.row (nested) -\-> -->
-    <!--             </div> -->
-    <!--             <\!-- /.col-lg-10 -\-> -->
-    <!-- 		<a href="#" class="btn btn-lg btn-light"><i class="fa fa-github fa-3x"></i><br>Log in with Github</a> -->
-    <!--         </div> -->
-    <!--         <\!-- /.row -\-> -->
-    <!--     </div> -->
-    <!--     <\!-- /.container -\-> -->
-    <!-- </section> -->
-
-    <!-- <\!-- Callout -\-> -->
-    <!-- <aside class="callout"> -->
-    <!--     <div class="text-vertical-center"> -->
-    <!--         <h2>Don't abandon your pet project, he would never do that to you.</h2> -->
-    <!--     </div> -->
-    <!-- </aside> -->
 
     <!-- Footer -->
     <footer id="contact">
@@ -173,7 +336,7 @@
 		      <br><i class="fa fa-github"></i>
 			<a href="https://github.com/guillemborrell/dateaproject">
 			  Source code
-			</a> Released under a MIT license.
+			</a> Released under a GPLv3 license.
 		    </p>
                     <!-- <ul class="list-unstyled"> -->
                     <!--     <li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li> -->
@@ -201,86 +364,30 @@
         <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
     </footer>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+<div class="modal" id="addWidgetModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Add Widget</h4>
+      </div>
+      <div class="modal-body">
+        <p>Add a widget stuff here..</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn">Close</a>
+        <a href="#" class="btn btn-primary">Save changes</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dalog -->
+</div><!-- /.modal -->
 
-    <!-- Custom Theme JavaScript -->
-    <script>
-    // Closes the sidebar menu
-    $("#menu-close").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
-    // Opens the sidebar menu
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
-    // Scrolls to the selected menu item on the page
-    $(function() {
-        $('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                    return false;
-                }
-            }
-        });
-    });
-    //#to-top button appears after scrolling
-    var fixed = false;
-    $(document).scroll(function() {
-        if ($(this).scrollTop() > 250) {
-            if (!fixed) {
-                fixed = true;
-                // $('#to-top').css({position:'fixed', display:'block'});
-                $('#to-top').show("slow", function() {
-                    $('#to-top').css({
-                        position: 'fixed',
-                        display: 'block'
-                    });
-                });
-            }
-        } else {
-            if (fixed) {
-                fixed = false;
-                $('#to-top').hide("slow", function() {
-                    $('#to-top').css({
-                        display: 'none'
-                    });
-                });
-            }
-        }
-    });
-    // Disable Google Maps scrolling
-    // See http://stackoverflow.com/a/25904582/1607849
-    // Disable scroll zooming and bind back the click event
-    var onMapMouseleaveHandler = function(event) {
-        var that = $(this);
-        that.on('click', onMapClickHandler);
-        that.off('mouseleave', onMapMouseleaveHandler);
-        that.find('iframe').css("pointer-events", "none");
-    }
-    var onMapClickHandler = function(event) {
-            var that = $(this);
-            // Disable the click handler until the user leaves the map area
-            that.off('click', onMapClickHandler);
-            // Enable scrolling zoom
-            that.find('iframe').css("pointer-events", "auto");
-            // Handle the mouse leave event
-            that.on('mouseleave', onMapMouseleaveHandler);
-        }
-        // Enable map zooming with mouse scroll when the user clicks the map
-    $('.map').on('click', onMapClickHandler);
-    </script>
 
-</body>
 
+  
+	<!-- script references -->
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
 </html>
